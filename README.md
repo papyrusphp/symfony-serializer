@@ -23,30 +23,27 @@ A plain PHP PSR-11 Container definition:
 use Papyrus\Serializer\Serializer;
 use Papyrus\SymfonySerializer\SymfonySerializer;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 return [
     // Other definitions
     // ...
 
     Serializer::class => static function (ContainerInterface $container): Serializer {
-        return new SymfonySerializer(
-            new Serializer(
-                [
-                    new DateTimeNormalizer([DateTimeNormalizer::FORMAT_KEY => 'Y-m-d\TH:i:s.uP']),
-                    new ObjectNormalizer(),
-                ],
-                [
-                    new JsonEncoder(),
-                ],
-            ),
-            JsonEncoder::FORMAT,
-        ); 
+        return new SymfonySerializer($container->get(SerializerInterface::class)); 
     },
 ];
 ```
 A Symfony YAML-file definition:
 ```yaml
 services:
-    Papyrus\Serializer\Serializer:
-        class: Papyrus\SymfonySerializer\SymfonySerializer
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  # Other definitions
+  # ...
+  
+  Papyrus\Serializer\Serializer:
+    class: Papyrus\SymfonySerializer\SymfonySerializer
 ```
