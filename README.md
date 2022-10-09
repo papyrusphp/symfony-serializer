@@ -22,6 +22,7 @@ A plain PHP PSR-11 Container definition:
 ```php
 use Papyrus\Serializer\Serializer;
 use Papyrus\SymfonySerializer\SymfonySerializer;
+use Papyrus\SymfonySerializer\SymfonySerializerFactory;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -32,8 +33,15 @@ return [
     Serializer::class => static function (ContainerInterface $container): Serializer {
         return new SymfonySerializer($container->get(SerializerInterface::class)); 
     },
+
+    // OR: When the Symfony Serializer is not configured yet, optionally a factory is available
+    // When using the factory, you'll need to install symfony/property-access as well
+    Serializer::class => static function (ContainerInterface $container): Serializer {
+        return SymfonySerializerFactory::create(); 
+    },
 ];
 ```
+
 A Symfony YAML-file definition:
 ```yaml
 services:
@@ -46,4 +54,9 @@ services:
   
   Papyrus\Serializer\Serializer:
     class: Papyrus\SymfonySerializer\SymfonySerializer
+  
+  # OR: When the Symfony Serializer is not configured yet, optionally a factory is available
+  # When using the factory, you'll need to install symfony/property-access as well
+  Papyrus\Serializer\Serializer:
+    factory: [Papyrus\SymfonySerializer\SymfonySerializerFactory, 'create']
 ```
