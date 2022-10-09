@@ -33,9 +33,6 @@
         "robmorgan/phinx": "^0.12.13",
         "symfony/property-access": "^6.1"
     },
-    "provide": {
-        "papyrus/serializer": "0.1.0"
-    },
     "autoload": {
         "psr-4": {
             "Papyrus\\SymfonySerializer\\": "src/"
