@@ -31,6 +31,7 @@
         "phpstan/phpstan": "^1.8",
         "phpunit/phpunit": "^9.5",
         "robmorgan/phinx": "^0.12.13",
+        "scrutinizer/ocular": "^1.9",
         "symfony/property-access": "^6.1"
     },
     "autoload": {
