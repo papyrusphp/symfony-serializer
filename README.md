@@ -11,7 +11,7 @@ Implementation of [papyrus/serializer](https://github.com/papyrusphp/serializer)
 ### Installation
 Install via composer:
 ```bash
-$ composer install papyrus/symfony-serializer
+composer require papyrus/symfony-serializer
 ```
 
 ## Configuration
