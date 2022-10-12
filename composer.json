@@ -33,6 +33,9 @@
         "scrutinizer/ocular": "^1.9",
         "symfony/property-access": "^6.1"
     },
+    "provide": {
+        "papyrus/serializer-implementation": "0.1"
+    },
     "autoload": {
         "psr-4": {
             "Papyrus\\SymfonySerializer\\": "src/"
