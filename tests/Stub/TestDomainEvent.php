@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace Papyrus\SymfonySerializer\Test\Stub;
 
 use DateTimeImmutable;
-use Papyrus\EventSourcing\DomainEvent;
 
-final class TestDomainEvent implements DomainEvent
+final class TestDomainEvent
 {
     /**
      * @param array<mixed> $array
@@ -21,10 +20,5 @@ final class TestDomainEvent implements DomainEvent
         public readonly DateTimeImmutable $dateTimeImmutable,
         public readonly ?string $nullableString,
     ) {
-    }
-
-    public function getAggregateRootId(): string
-    {
-        return $this->aggregateRootId;
     }
 }
