@@ -28,7 +28,6 @@ final class SymfonySerializer implements Serializer
      */
     public function deserialize(mixed $payload, string $objectClassName): object
     {
-        /* @phpstan-ignore-next-line */
         return $this->serializer->deserialize($payload, $objectClassName, $this->format);
     }
 }
